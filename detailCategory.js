@@ -43,10 +43,11 @@ function displayCategory(meals) {
 $('#catData').on('click', '.col-md-3', function() {
     
     document.getElementById('mealCategory').classList.add('d-none');
-    // document.getElementById('contactUS').classList.add('d-none');
-    // document.getElementById('home').classList.add('d-none');
-    // document.getElementById('searchContainer').classList.add('d-none');
+    // document.getElementById('detailById').classList.add('d-none');
+    document.getElementById('home').classList.add('d-none');
+    document.getElementById('searchContainer').classList.add('d-none');
     document.getElementById('categDetail').classList.remove('d-none')
+    document.getElementById('detailId').classList.remove('d-none')
     // Get the content of the h3 tag inside the clicked .col-md-3 element
     let h3Content = $(this).find('.meal-layer h3').text();
     

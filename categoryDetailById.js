@@ -88,17 +88,19 @@
 //     getCategDetailId(mealId);
 // });
 
-$('#category, #rowData ,#areaData , #ingredData').on('click', '.col-md-3', function() {
+$('#category, #rowData ,#areaData , #ingredData , #SearchData').on('click', '.col-md-3', function() {
    
     console.log(this);
 
     
     const mealId = $(this).data('idmeal'); 
     document.getElementById('araeMeals').classList.add('d-none')
+    document.getElementById('searchContainer').classList.add('d-none');
     document.getElementById('ingredMeals').classList.add('d-none')
     document.getElementById('home').classList.add('d-none');
     document.getElementById('categDetail').classList.add('d-none');
     document.getElementById('detailById').classList.remove('d-none');
+    document.getElementById('detailId').classList.remove('d-none');
 
     getCategDetailId(mealId);
 

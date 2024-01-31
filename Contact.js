@@ -7,6 +7,7 @@ async function showContacts() {
     document.getElementById('searchContainer').classList.add('d-none');
 
         document.getElementById('ingredMeals').classList.add('d-none');
+        document.getElementById('home').classList.add('d-none');
         document.getElementById('Ingredients').classList.add('d-none');
         document.getElementById('araeMeals').classList.add('d-none');
         document.getElementById('detailById').classList.add('d-none');

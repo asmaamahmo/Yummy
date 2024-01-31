@@ -62,10 +62,10 @@ async function searchByName(query) {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`);
         const result = await response.json();
         display(result.meals);
-        return result.meals;  // Return the result for further use
+        return result.meals;  
     } catch (error) {
         console.error('Error:', error);
-        return null;  // Return null or handle the error appropriately
+        return null;  
     }
 }
 async function searchByirstLetter(queryL) {
@@ -73,10 +73,10 @@ async function searchByirstLetter(queryL) {
         const response = await fetch(`https://www.themeaLdb.com/api/json/v1/1/search.php?f=${queryL}`);
         const result = await response.json();
         display(result.meals);
-        return result.meals;  // Return the result for further use
+        return result.meals;  
     } catch (error) {
         console.error('Error:', error);
-        return null;  // Return null or handle the error appropriately
+        return null; 
     }
 }
 async function mealCategories() {
@@ -84,10 +84,10 @@ async function mealCategories() {
         const response = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`);
         const result = await response.json();
         displayCategories(result.categories);
-        return result.categories;  // Return the result for further use
+        return result.categories;  
     } catch (error) {
         console.error('Error:', error);
-        return null;  // Return null or handle the error appropriately
+        return null; 
     }
 }
 
@@ -108,7 +108,7 @@ async function getResponse() {
 
 
 
-// Example: fetching data for a specific query (e.g., 'chicken')
+
 console.log(getResponse('chicken'));
  
 function display(result) {
@@ -162,22 +162,15 @@ function display(result) {
         const categories = await mealCategories();
         displayCategories(categories);
         document.getElementById('home').classList.add('d-none');
+        document.getElementById('detailId').classList.add('d-none');
+        document.getElementById('detailById').classList.add('d-none');
+
         document.getElementById('searchContainer').classList.add('d-none');
     } catch (error) {
         console.error('Error fetching meal categories:', error);
     }
 }
-// function getCategories() {
-   
-//     mealCategories().then((categories) => {
-//         document.getElementById('mealCategories').classList.remove('d-none');
-//         displayCategories(categories);  // Pass the categories data to the display function
-//         document.getElementById('home').classList.add('d-none');
-//         document.getElementById('searchContainer').classList.add('d-none');
-//     }).catch((error) => {
-//         console.error('Error fetching meal categories:', error);
-//     });
-// }
+
 
  function showSearchInputs() {
     document.getElementById('searchContainer').classList.remove('d-none');
@@ -193,7 +186,7 @@ function displaySearch(result) {
     let cartoona = ``
    for (let i = 0; i < result.length; i++) {
     cartoona +=   `
-    <div class="col-md-3">
+    <div class="col-md-3" data-idMeal="${result[i].idMeal}">
     <div class="meal position-relative overflow-hidden rounded-2 cursor-pointer">
         <img class="w-100" src="${result[i].strMealThumb}" alt="" srcset="">
         <div class="meal-layer position-absolute d-flex align-items-center text-black p-2">
@@ -223,7 +216,7 @@ function displaySearchFrist(result , queryL) {
         for (let i = 0; i < result.length; i++) {
             if (result[i].strMeal.charAt(0).toLowerCase() === queryL) {
                 cartoona += `
-                <div class="col-md-3">
+                <div class="col-md-3" data-idMeal="${result[i].idMeal}">
                     <div class="meal position-relative overflow-hidden rounded-2 cursor-pointer">
                         <img class="w-100" src="${result[i].strMealThumb}" alt="" srcset="">
                         <div class="meal-layer position-absolute d-flex align-items-center text-black p-2">
@@ -243,7 +236,7 @@ function displaySearchFrist(result , queryL) {
     document.getElementById('SearchData').innerHTML = cartoona;
 }
 document.getElementById('firstLetterInput').addEventListener('input', async function () {
-    const firstLetterInput = this.value.toLowerCase(); // use firstLetterInput to avoid naming conflicts
+    const firstLetterInput = this.value.toLowerCase(); 
 
     const result = await searchByirstLetter(firstLetterInput);
     

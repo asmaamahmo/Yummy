@@ -151,18 +151,18 @@ function inputsValidation() {
         $('#repasswordAlert').addClass('d-none');
     }
 
-    if ($('#nameAlert').hasClass('d-none') &&
-    $('#phoneAlert').hasClass('d-none') &&
-    $('#emailAlert').hasClass('d-none') &&
-    $('#ageAlert').hasClass('d-none') &&
-    $('#passAlert').hasClass('d-none') &&
-    $('#repassAlert').hasClass('d-none')) {
-    $('#submitBtn').removeAttr('disabled');
-} else {
-    $('#submitBtn').prop('disabled', false);
-}
-
-    
+    if (
+        $('#nameAlert').hasClass('d-none') &&
+        $('#phoneAlert').hasClass('d-none') &&
+        $('#emailAlert').hasClass('d-none') &&
+        $('#ageAlert').hasClass('d-none') &&
+        $('#passwordAlert').hasClass('d-none') &&
+        $('#repasswordAlert').hasClass('d-none')
+    ) {
+        $('#submitBtn').prop('disabled', true);
+    } else {
+        $('#submitBtn').prop('disabled', false);
+    }
 }
 
 $(document).ready(function() {

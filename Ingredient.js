@@ -5,6 +5,7 @@ async function getMealsByingred() {
         const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
         const result = await response.json();
         const ingreds = result.meals.map(ingred => ingred.strIngredient);
+        const ingred = result.meals.map(ingred => ingred.strDescription);
         return ingreds;
     } catch (error) {
         console.error('Error:', error);
@@ -16,6 +17,8 @@ async function getMealsByingred() {
 async function getIngerd() {
     try {
         document.getElementById('mealCategory').classList.add('d-none')
+        document.getElementById('detailId').classList.add('d-none');
+       document.getElementById('detailById').classList.add('d-none');
         document.getElementById('contactUs').classList.add('d-none')
         document.getElementById('area').classList.add('d-none')
         document.getElementById('Ingredients').classList.remove('d-none')
@@ -36,7 +39,7 @@ function displayingreds(ingreds) {
             <div class="rounded-2 text-center cursor-pointer">
                 <i class="fa-solid fa-drumstick-bite fa-4x"></i>
                 <h3>${ingreds[i]}</h3>
-                <p>${ingreds[i].meals}</p>
+                <p>${(ingreds[i])}</p>
             </div>
         </div>
         `;
@@ -102,7 +105,9 @@ $('#rowIngred').on('click', '.col-md-3', function() {
     document.getElementById('area').classList.add('d-none');
     document.getElementById('home').classList.add('d-none');
     document.getElementById('Ingredients').classList.add('d-none');
-//     // document.getElementById('searchContainer').classList.add('d-none');
+    // document.getElementById('detailId').classList.add('d-none');
+    // document.getElementById('detailById').classList.add('d-none');
+
     document.getElementById('ingredMeals').classList.remove('d-none')
 //     // Get the content of the h3 tag inside the clicked .col-md-3 element
     let h3Content = $(this).find('h3').text();
